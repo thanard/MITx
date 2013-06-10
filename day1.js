@@ -1,6 +1,6 @@
 function calculate(text){
     try{
-        var pattern=/[0-9]*\.[0-9]+|[0-9]+|\+|\-|\*|\/|\(|\)/g;
+        var pattern=/[0-9]*\.[0-9]+|[0-9]+|\+|\-|\*|\/|\(|\)|sin|cos|tan|log|sqrt/g;
         var tokens = text.match(pattern);
         console.log(JSON.stringify(tokens));
         var val = evaluate(tokens);
@@ -14,7 +14,7 @@ function calculate(text){
         return err;
     }
     //return JSON.stringify(tokens);
-    }
+}
     
 //read operand gets called by evaluate
 function read_operand(array){
@@ -32,8 +32,19 @@ function read_operand(array){
         }
     }
     if(num=='-'){
-        num=-array[0];
-        array.shift();
+        num=-read_operand(array);
+    }
+    if(num=='sin'){
+        num=Math.sin(read_operand(array));
+    }
+    if(num=='log'){
+        num=Math.log(read_operand(array));
+    }
+    if(num=='cos'){
+        num=Math.cos(read_operand(array));
+    }
+    if(num=='tan'){
+        num=Math.tan(read_operand(array));
     }
     if(isNaN(parseInt(num))){
         throw "number expected";
@@ -76,14 +87,25 @@ function evaluate(array){
         return value;
     }
 }
+
+function read_term(array){
+    for(var i=0;i<array.length;i++){
+        if(array)
+    }
+}
 function setup_cal(div){
-    var input=$('<input></input>',{type:"text",size: 50});
+    var input=$('<input id="input1"></input>',{type:"text",size: 50});
     var output = $('<div></div>');
-    var button = $('<button>Calculate</button>');
+    var button = $('<button id="button1">Calculate</button>');
     button.bind("click",function(){
         output.text(String(calculate(input.val())));
     });
     
+    $("#input1").keyup(function(event){
+        if(event.keyCode==13){
+            $("#button1").click();
+        }
+    })
     $(div).append(input,button,output);
 }
 // #-id .-class
