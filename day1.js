@@ -1,7 +1,8 @@
 function calculate(text){
     try{
-        var pattern=/\d+|\+|\-|\*|\/|\(|\)/g;
+        var pattern=/[0-9]*\.[0-9]+|[0-9]+|\+|\-|\*|\/|\(|\)/g;
         var tokens = text.match(pattern);
+        console.log(JSON.stringify(tokens));
         var val = evaluate(tokens);
         if (tokens.length!==0){
             throw "ill-formed expression";
@@ -12,25 +13,43 @@ function calculate(text){
     catch(err){
         return err;
     }
-    return JSON.stringify(tokens);
+    //return JSON.stringify(tokens);
     }
     
+//read operand gets called by evaluate
 function read_operand(array){
     var num=array[0];
     array.shift();
+    //check if it is an open paren
+    if (num=='('){
+        var temp1=evaluate(array);
+        if(array[0]==')'){
+            array[0]=temp1;
+            num=array[0];
+            array.shift();
+        }else{
+            throw ") is not found";
+        }
+    }
+    if(num=='-'){
+        num=-array[0];
+        array.shift();
+    }
     if(isNaN(parseInt(num))){
         throw "number expected";
     }else{
-        return parseInt(num);
+        return parseFloat(num);
     }
 }
 
+//evaluate text in the text field
 function evaluate(array){
     if (array.length === 0){
         throw "missing operand";
     }else{
         var value=read_operand(array);
-        while(array.length!==0){
+        //stop either when the array is empty or the next one is a closed paren
+        while(array.length!==0 && array[0]!=')'){
             var operator = array[0];
             array.shift();
             if (array.length===0){
