@@ -88,11 +88,11 @@ function evaluate(array){
     }
 }
 
-function read_term(array){
-    for(var i=0;i<array.length;i++){
-        if(array)
-    }
-}
+// function read_term(array){
+//     for(var i=0;i<array.length;i++){
+//         if(array)
+//     }
+// }
 function setup_cal(div){
     var input=$('<input id="input1"></input>',{type:"text",size: 50});
     var output = $('<div></div>');
