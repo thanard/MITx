@@ -8,7 +8,7 @@ function calculate(text){
             throw "ill-formed expression";
         }else{
             return String(val);
-        } 
+        }
     }
     catch(err){
         return err;
