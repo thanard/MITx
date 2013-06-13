@@ -1,20 +1,31 @@
+#screen{
+    border: black solid 1px;
+    background-color: rgb(214, 244, 252);
+	margin-left: 10px; 
+	margin-top: 10px;
+	margin-bottom: 10px;
+    width: 385px;
+    height: 300px;
+        }
+        
+.graphcalc{
+	background-color: #E0E0E0;
+	width: 410px;
 
-
-.graphcalc input[type = "text]{
-    display:block;
-    }
-
-button{
-    position:absolute;
-    left:20px;
-    bottom:240px;
-    
 }
 
-canvas{
-    border: black solid 1px;
-    background-color: #F0FFF0;
-    width:400px;
-    height:300px;
-    border-radius: 5px;
-    }
+#input1{
+	width: 355px;
+}
+
+#input2{
+	width: 140px;
+}
+
+text{
+	margin-left: 10px;
+}
+
+button{
+	margin-left: 10px;
+}
