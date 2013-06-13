@@ -1,0 +1,11 @@
+#uglybutton-value {
+  background: yellow;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+#uglybutton {
+  background: teal;
+  border: 10px dotted red;
+  padding: 10px;
+}

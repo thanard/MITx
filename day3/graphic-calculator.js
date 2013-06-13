@@ -1,4 +1,4 @@
-var graphcalc = (function(){
+var graphcalc = (function (){
     var exports={};//accessible from outside
     function setup(div){ 
         var canvas1 = $('<canvas></canvas>', {id: "screen"});
