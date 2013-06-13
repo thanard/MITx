@@ -1,4 +1,4 @@
-var graphcalc = (function(){
+var graphcalc = (function (){
     var exports={};//accessible from outside
     function graph(canvas,functionInp,min,max){
         var tree= calculator.parse(functionInp);
