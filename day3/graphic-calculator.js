@@ -22,11 +22,31 @@ var graphcalc = (function (){
     	$(div).append(screenDiv, divR1, divR2, divR3);
         
         plotB.bind('click', function(){
-            graph(canvas1, input1.val(), input2.val(), input3.val());
+            graph(canvas1, input1.val(), parseFloat(input2.val()), parseFloat(input3.val()));
             //graph($('#screen'), $('#input1.val()'), #input2.val(), #input3.val() )
         });
     }
-    
+    /*
+    turn a floating number into a three decimal point number
+    @return String
+    */
+    function threeDecimalPoints(number){
+        var s = number.toString();
+        var i;
+        for(i = 0;i<s.length;i++){
+            if(s[i]=='.'){
+                break;
+            }
+        }
+        if(i>=s.length-3){
+            for(var j=0;j<i-s.length+3;j++){
+                s.concat('0');
+            }
+            return s;
+        }else{
+            return s.substring(0,i+4);
+        }
+    }
     function graph(canvas, func, min, max){
         var DOMcanvas = canvas[0];   
         DOMcanvas.width = canvas.width();
@@ -42,8 +62,6 @@ var graphcalc = (function (){
             for(var i=0;i<width;i++){
                 var value=calculator.evaluate(tree,{x:min+1.0*i/(width-1)*(max-min),e:Math.e,pi:Math.PI});//1.0* to make it floating
                 output.push(value);
-                console.log(min+1.0*i/(width-1)*(max-min));
-                console.log(value);
             }
     
             var maxx=Math.max.apply(Math, output);//max amp
@@ -77,8 +95,21 @@ var graphcalc = (function (){
                 ctx.lineTo(mx+10, my);
                 ctx.moveTo(mx, my-10);
                 ctx.lineTo(mx, my+10);
+                ctx.fillText('x = '+threeDecimalPoints(min+1.0*mx/(width-1)*(max-min)),mx+3,my-15);
+                ctx.fillText('y = '+threeDecimalPoints(output[mx]),mx+3,my-3);
+                ctx.stroke()
+                
+                ctx.beginPath()
+                ctx.arc(mx,gheight-(output[mx]-minn)*gheight/(maxx-minn)+5,3,0,2*Math.PI);
                 ctx.strokeStyle="black";
                 ctx.lineWidth = 1;
+                for(var i=0;i<height;i++){
+                    if(i%4==0){
+                        ctx.moveTo(mx,i);
+                    }else if(i%4==2){
+                        ctx.lineTo(mx,i);
+                    }
+                }
                 ctx.stroke();
                 
             })	
