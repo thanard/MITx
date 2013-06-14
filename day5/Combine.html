@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    
+    <title>Project: Graphing Calculator and Apple Calculator </title>
+    <link href="apple-calculator.css" rel="stylesheet"></link>
+    <link href = 'graphcalc.css' rel = "stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+    <script src="apple-calculator.js"></script>
+    <script src='graphic-calculator.js'></script>
+	<script src='https://web.mit.edu/6.mitx/www/calculator.js'></script>
+    
+</head>
+
+<body>
+    <h1>Apple calculator and graphical calculator.</h1>
+    <div id="calculator">
+        <div class="row">
+            <div id="screen">
+                <div id="expression">
+                
+                </div>
+                <div id="operator">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button class="button">MC</button>
+            <button class="button">M+</button>
+            <button class="button">M-</button>
+            <button class="button">MR</button>
+        </div>
+        <div class="row">
+            <button class="button">C</button>
+            <button class="button" data-operator="reverse">&#177</button>
+            <button class="button" data-operator="/">&#247</button>
+            <button class="button" data-operator="*">&#215</button>
+        </div>
+        <div class="row">
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">-</button>
+        </div>
+        <div class="row">
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">+</button>
+        </div>
+        <div id="bigRow">
+            <div id="leftColumn">
+                <div class="row">
+                    <button class="button">1</button>
+                    <button class="button">2</button>
+                    <button class="button">3</button>
+                </div>
+                <div class="row">
+                    <button id="wideButton" class="button">0</button>
+                    <button class="button"><b>.</b></button>
+                </div>
+            </div>
+            <div id="rightColumn">
+                <button id="tallButton" class="button">=</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class='graphcalc'></div>
+</body>
+
+</html>

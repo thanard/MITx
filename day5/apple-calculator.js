@@ -125,36 +125,25 @@ function read_term(array){
     return evaluate(newarray);
 }
 
-function convert_symbol(b){
-    console.log(b);
-    if(b=='×'){
-        return '*';
-    }else if(b=='&#247'){
-        return '/';
-    }else if(b=='='){
-        return '';
-    }else{
-        return b;
-    }
-}
+
 $(document).ready(function() {
     var tokens="";
-    var isRemove=false;
+    var isRemove=false;//if true has to remove the expression to 0
     $('#tallButton').bind('click', function(){
         var expression = $('#expression');
         var input = expression.text().trim();
         expression.text(String(calculate(tokens)));
+        tokens=String(calculate(tokens))
+        $('#operator').text('');
     });
     
     $('.button').bind('click',function() {
-        console.log("we are here");
         var inp = $(this).text();
+        //if it is * or / sign on cal
         if(typeof $(this).data('operator') !='undefined'){
             inp=$(this).data('operator');
         }
         
-        tokens+=convert_symbol(inp);
-        console.log(tokens);
         
         if(/[0-9]|\./.test(inp)){
             if($('#expression').text()=='0'||isRemove===true){
@@ -162,13 +151,30 @@ $(document).ready(function() {
                 isRemove=false;
             }
             $('#expression').append(inp);
+            $('#operator').text('');
+            tokens+=inp;
         }else if(inp=='C'){
             $('#expression').text('0');
+            $('#operator').text('');
             tokens="";
         }else if(inp=='+'||inp=='-'||inp=='*'||inp=='/'){
-            tokens=tokens.substring(0,tokens.length-1)+inp;
+            var lastElt=tokens[tokens.length-1]
+            if(lastElt=='+'||lastElt=='-'||lastElt=='*'||lastElt=='/'){
+                tokens=tokens.substring(0,tokens.length-1);//remove the last elt to be replace
+            }
             isRemove=true;
+            $('#expression').text(String(calculate(tokens)));
+            tokens=String(calculate(tokens))+inp;
             $('#operator').text($(this).text());
+        }else if(inp == "reverse"){
+            if(tokens[0]=='-'){
+                tokens=tokens.substring(1,tokens.length);
+                $('#expression').text(tokens);
+            }else{
+                tokens="-"+tokens;
+                $('#expression').text(tokens);
+            }
         }
+        console.log(tokens);
     });
 });
