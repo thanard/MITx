@@ -1,14 +1,12 @@
 var quiz = (function(){
 	var exports={};
 
-	var questions=[{"questionText":"Find x when 2x=3?","options":["0",".5","1","1.5"],"solutionIndex":3},
-	{"questionText":"What does the graph x^2=y^2 look like?","options":["parabola","eclipse","circle","two lines"],"solutionIndex":3}]; //structure with ...
-
 	var answers=[]; //answers from the student
-
+var questions=[{"questionText":"Find x when 2x=3?","options":["0",".5","1","1.5"]},
+{"questionText":"What does the graph x^2=y^2 look like?","options":["parabola","eclipse","circle","two lines"]}]; //structure with ...
 	var score=localStorage['score'];//score of the student 
 	var currentQuestionIndex=localStorage['currentQuestionIndex']; //index of the current question we are on
-	var useParse=true;
+	var bool;
 
 	//when first open the page
 	if(score==undefined){
@@ -18,14 +16,6 @@ var quiz = (function(){
 		localStorage['currentQuestionIndex']=0;
 	}
 
-	/*
-	input:takes in a question index and a student's answers
-	output: true if answer is correct
-	*/
-	function checkAnswer(ans){
-		return questions[currentQuestionIndex].options[questions[currentQuestionIndex].solutionIndex] == ans;
-	}
-
 	function getQuestionIdx(){
 		return currentQuestionIndex
 	}
@@ -33,16 +23,29 @@ var quiz = (function(){
 	function getAnswers(){
 		var answer = $('input[name="choice'+currentQuestionIndex+'"]:checked').attr('value');
 
-		console.log(answer);
+		var req=$.ajax({
+			async:false,//execute line by line; otherwise it's gonna be parallel
+			url:"http://localhost:8080/",
+			data:{currentQuestionIndex:getQuestionIdx(),answer:answer},
+		})
+		req.done(function(msg){
+			if(msg=='true'){
+				bool=true;
+			}else{
+				bool=false;
+			}
+			console.log(bool)
+		});
+
 		if(answer==undefined){
 			$('#displayText').text("Choose an answer");
 		}
-		else if (checkAnswer(answer)){
+		else if (bool){
 			$('#displayText').text("Correct !");
 			incrementScore();
 			localStorage['score']=score;
 		}else{
-			$('#displayText').text("Wrong, the correct answer is "+questions[currentQuestionIndex].options[questions[currentQuestionIndex].solutionIndex]);
+			$('#displayText').text("Wrong :(");//, the correct answer is "+questions[currentQuestionIndex].options[questions[currentQuestionIndex].solutionIndex]);
 		}
 		nextQuestion;
 	}
@@ -78,7 +81,6 @@ var quiz = (function(){
 
 		var question = $('<text>'+questions[currentQuestionIndex].questionText+'</text>');
 		divQuestions.append(question);
-		console.log("here");
 		for(var j=0;j<4;j++){
 			var option = $('<input></input>', {type: 'radio',name:"choice"+currentQuestionIndex,value:questions[currentQuestionIndex].options[j], class: "option"});	
 			divOptions.append(option,questions[currentQuestionIndex].options[j]);
@@ -119,13 +121,13 @@ $(document).ready(function(){
  //  }
 //});
 	quiz.setup();
-	var req=$.ajax({
-		async:false,//execute line by line; otherwise it's gonna be parallel
-		url:"http://localhost:8080/",
-		data:{currentQuestionIndex:quiz.getQuestionIdx(),},
-	})
-	req.done(function(msg){
-		console.log(msg);
-	});
-	console.log("what");
+	// var req=$.ajax({
+	// 	async:false,//execute line by line; otherwise it's gonna be parallel
+	// 	url:"http://localhost:8080/",
+	// 	data:{currentQuestionIndex:quiz.getQuestionIdx()},
+	// })
+	// req.done(function(msg){
+	// 	console.log(msg);
+	// });
+	// console.log("what");
 });
