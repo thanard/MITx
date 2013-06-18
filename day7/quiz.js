@@ -27,27 +27,38 @@ var questions=[{"questionText":"Find x when 2x=3?","options":["0",".5","1","1.5"
 			async:false,//execute line by line; otherwise it's gonna be parallel
 			url:"http://localhost:8080/",
 			data:{currentQuestionIndex:getQuestionIdx(),answer:answer},
+			timeout:2000,
+		    success: function(response) {
+		    	if(msg=='true'){
+					bool=true;
+				}else{
+					bool=false;
+				}
+				console.log(bool)
+				if(answer==undefined){
+					$('#displayText').text("Choose an answer");
+				}
+				else if (bool){
+					$('#displayText').text("Correct !");
+					incrementScore();
+					localStorage['score']=score;
+				}else{
+					$('#displayText').text("Wrong :(");//, the correct answer is "+questions[currentQuestionIndex].options[questions[currentQuestionIndex].solutionIndex]);
+				}
+				nextQuestion;
+			},
+		    error: function () {
+		        alert('Server error');
+		    }
 		})
-		req.done(function(msg){
-			if(msg=='true'){
-				bool=true;
-			}else{
-				bool=false;
-			}
-			console.log(bool)
-		});
-
-		if(answer==undefined){
-			$('#displayText').text("Choose an answer");
-		}
-		else if (bool){
-			$('#displayText').text("Correct !");
-			incrementScore();
-			localStorage['score']=score;
-		}else{
-			$('#displayText').text("Wrong :(");//, the correct answer is "+questions[currentQuestionIndex].options[questions[currentQuestionIndex].solutionIndex]);
-		}
-		nextQuestion;
+		// req.done(function(msg){
+		// 	if(msg=='true'){
+		// 		bool=true;
+		// 	}else{
+		// 		bool=false;
+		// 	}
+		// 	console.log(bool)
+		// });
 	}
 
 	function nextQuestion(){

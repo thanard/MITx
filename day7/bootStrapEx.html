@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Twitter Bootstrap Examples</title>
+    <link href="/Users/Admin/Dropbox/MITx/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="/Users/Admin/Dropbox/MITx/bootstrap/js/bootstrap.min.js"></script>
+	<div class="container">
+            <!-- A menu bar. -->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="brand" href="#">Example Page</a>
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+ 
+            <h1>Twitter Bootstrap</h1>
+            <p>This is the first example!</p>
+            <div class="pagination">
+			    <ul>
+			        <li><a href="#">Prev</a></li>
+			        <li><a href="#">1</a></li>
+			        <li><a href="#">2</a></li>
+			        <li><a href="#">3</a></li>
+			        <li><a href="#">4</a></li>
+			        <li><a href="#">Next</a></li>
+			    </ul>
+			</div>
+			<!-- Button to trigger modal -->
+			<a href="#popup" role="button" class="btn" data-toggle="modal">Login</a>
+			 
+			<!-- Modal -->
+			<div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popupLabel" aria-hidden="true">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			        <h3 id="popupLabel">Login</h3>
+			    </div>
+			    <div class="modal-body">
+			        <p>Enter login details...</p>
+			    </div>
+			    <div class="modal-footer">
+			        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+			        <button class="btn btn-primary">Login</button>
+			    </div>
+			</div>
+
+
+			<!-- The tab headings. -->
+			<ul class="nav nav-tabs">
+			    <li class="active"><a href="#homer" data-toggle="tab">Homer</a></li>
+			    <li><a href="#marge" data-toggle="tab">Marge</a></li>
+			    <li><a href="#grandpa" data-toggle="tab">Grandpa</a></li>
+			</ul>
+			 
+			<!-- The tab content. -->
+			<div id="my-tab-content" class="tab-content">
+			 
+			    <div class="tab-pane active" id="homer">
+			        <p>Homer Simpson</p>
+			    </div>
+			 
+			    <div class="tab-pane" id="marge">
+			        <p>Marge Simpson</p>
+			    </div>
+			 
+			    <div class="tab-pane" id="grandpa">
+			        <p>Grandpa Simpson</p>
+			    </div>
+			</div>
+	</div>
+
+</body>
+</html>    
