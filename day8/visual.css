@@ -1,5 +1,5 @@
 .chart {border:1px solid gray;}
-.chart div 
+/*.chart div 
 {
 	background-color: rgb(100,50,150);
 	color:#fff;
@@ -7,4 +7,13 @@
 	font:10px sans-serif;
 	padding:3px;
 	margin:1px;
+}*/
+.chart rect{
+	fill:rgb(100,50,150);
+	stroke:white;
+}
+
+.char text{
+	fill:white;
+	font:10px sans-serif;
 }
