@@ -131,6 +131,8 @@ var knapsack = function(){
 				show_alert();
 
 			}else{
+				var snd = new Audio("click.mp3");
+				snd.play();
 				model.move(name);
 				//if success hurrah
 				if(model.get_totalValue()==275){

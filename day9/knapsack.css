@@ -10,7 +10,6 @@ body{
 	position: absolute;
 	left: 10%;
 	top: 0%;
-
 	display: inline-block;
 }
 .knapsack .burglar {
@@ -37,6 +36,7 @@ body{
 	width: 360px;
 	height:280px;
 	display: inline-block;
+	background-color:#D6D6D6;
 }
 .image{
 	margin-top: 5px;
