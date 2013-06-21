@@ -16,9 +16,9 @@ var knapsack = function(){
 		var controller = Controller(model);
 		var view=View(div,controller,model);
 
-		var button = $("<p><button> Reset </button></p>");
-
 		model.start();
+
+		var button = $("<p><button> Reset </button></p>");
 
 		button.on("click",controller.reset);
 		$(div).append(button);
@@ -67,8 +67,6 @@ var knapsack = function(){
 			listItem={"house":["clock","painting","radio","vase","book","computer"],"burglar":[]};
 			localStorage.listItem=JSON.stringify(listItem);
 			event_handler.trigger('update',listItem);
-			totalValue=0;
-			totalWeight=0;
 		}
 
 		function start(){
@@ -78,10 +76,6 @@ var knapsack = function(){
 				localStorage.listItem=JSON.stringify(listItem);
 			}
 			event_handler.trigger('update',listItem);
-			for(var i=0;i<listItem.burglar.length;i++){
-				totalWeight+=itemProperties.weight[listItem.burglar[i]];
-				totalValue+=itemProperties.value[listItem.burglar[i]];
-			}
 		}
 
 		function move(name){
@@ -89,13 +83,9 @@ var knapsack = function(){
 			if(isInArray(name,listItem["house"])){
 				listItem["house"].splice(listItem["house"].indexOf(name),1);
 				listItem["burglar"].push(name);
-				totalValue+=itemProperties.value[name];
-				totalWeight+=itemProperties.weight[name];
 			}else{
 				listItem["burglar"].splice(listItem["burglar"].indexOf(name),1);
 				listItem["house"].push(name);
-				totalValue-=itemProperties.value[name];
-				totalWeight-=itemProperties.weight[name];
 			}
 			localStorage.listItem=JSON.stringify(listItem);
 			event_handler.trigger('update',listItem);
@@ -104,9 +94,17 @@ var knapsack = function(){
 			return listItem;
 		}
 		function get_totalWeight(){
+			var totalWeight=0;
+			for(var i=0;i<listItem.burglar.length;i++){
+				totalWeight+=itemProperties.weight[listItem.burglar[i]];
+			}
 			return totalWeight;
 		}
 		function get_totalValue(){
+			var totalValue=0;
+			for(var i=0;i<listItem.burglar.length;i++){
+				totalValue+=itemProperties.value[listItem.burglar[i]];
+			}
 			return totalValue;
 		}
 
@@ -173,11 +171,8 @@ var knapsack = function(){
 			div21.empty();
 			div22.empty();
 
-			currentTotal.find('span #w').text(model.get_totalWeight()+'kg');
-			currentTotal.find('span #v').text('$'+model.get_totalValue());
-
-
-			console.log(model.get_totalWeight());
+			currentTotal.find('#w').text(model.get_totalWeight()+'kg');
+			currentTotal.find('#v').text('$'+model.get_totalValue());
 
 			hItems=listItem["house"]
 			for(var i=0;i<hItems.length;i++){
