@@ -126,12 +126,21 @@ var knapsack = function(){
 			if(itemProperties.weight[name]+model.get_totalWeight()>maxWeight && isInArray(name,model.get_listItem().house)){
 				var snd = new Audio("Fail.mp3");
 				snd.play();
-				alert("Knapsack capacity exceeded :(");
+				show_alert();
+
 			}else{
 				model.move(name);
 			}
 		}
-		return {reset:reset,move:move};
+
+			// knapsack overflow event
+		function show_alert() {
+		    // make alert visible for a total of 3 seconds
+		    $('#alert').animate({opacity: 1},1000);
+		    $('#alert').animate({opacity: 1},1000); // pause
+		    $('#alert').animate({opacity: 0},1000);
+		}
+		return {reset:reset,move:move}; 
 	}
 
 	function View(div,controller,model){
