@@ -126,10 +126,20 @@ var knapsack = function(){
 			if(itemProperties.weight[name]+model.get_totalWeight()>maxWeight && isInArray(name,model.get_listItem().house)){
 				var snd = new Audio("Fail.mp3");
 				snd.play();
+
+				$('#alert').text("Knapsack is too heavy :(!");
 				show_alert();
 
 			}else{
 				model.move(name);
+				//if success hurrah
+				if(model.get_totalValue()==275){
+					var snd = new Audio("hurrah.mp3");
+					snd.play();
+					$('#alert').text("Good job!");
+					show_alert();
+					model.reset();
+				}
 			}
 		}
 
