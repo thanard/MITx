@@ -6,7 +6,7 @@ var counter = function(){
 		var view2=View(div,model);
 
 		var button = $("<button> Increment </button>");
-		button.on("click",controller.increment);
+		button.bind("click",controller.increment);
 		$(div).append(button);
 	}
 

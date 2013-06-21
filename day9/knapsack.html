@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title>Knapsack</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="knapsack.js"></script>
+    <link href = "knapsack.css" rel = "stylesheet"></link>
+    <style>
+		body{
+			text-align: center
+
+		}
+		#bigframe{
+			position:relative; 
+			height:450px;
+		}
+		.knapsack .house {
+			position: absolute;
+			left: 10%;
+			top: 0%;
+
+			display: inline-block;
+		}
+		.knapsack .burglar {
+			position: absolute;
+			right:10%;
+			top: 0%;
+			display: inline-block;
+		}
+
+		.smallImg {
+			height: 100px;
+			width: 100px;
+		}
+
+		.smallImg:hover {
+			vertical-align: middle;
+			height: 90px;
+			width: 90px;
+		}
+		.item {
+			border:2px solid gray;
+			margin: 20px;
+			padding: 20px;
+			width: 360px;
+			height:280px;
+			display: inline-block;
+		}
+		.image{
+			margin-top: 5px;
+			height: 100px;
+			width: 200px;
+		}
+
+		.pic_frame{
+			display: inline-block;
+			margin-left: 2px;
+			margin-right:2px;
+		}
+
+		button {
+		    width: 90px;
+		    height:55px;
+		    border-radius: 11px;
+		    margin: 4px 2.5px;
+		    font-size: 28px;
+		    font-weight:500;
+		    background-color:#D6D6D6;
+		    border-width: 1px;
+		    border-color:#747474;
+		    border-style:solid;
+		    -webkit-box-shadow: inset -1px -1px 8px #888, inset 1px -1px 8px #888, inset 0 4px 8px 0px #FFFFFF;
+		    text-shadow: 0px 1px 0px #747474;
+		}
+		button:hover {
+		    background-color:#B8B8B8;
+		}
+
+		button:active {
+		    background-color:#AAAAAA;
+		    -webkit-box-shadow: inset 2px 4px 6px #777777;
+		}
+    </style>
+</head>
+<body>
+	<h1>The Burglar's Dilema</h1>
+	<p>The knapsack can only afford 20 kg. Help the burglar to pick objects to maximize the total value of his knapsack.</p>
+	<div class="knapsack"></div>
+</body>
+</html>

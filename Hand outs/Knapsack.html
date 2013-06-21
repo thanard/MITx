@@ -1,0 +1,97 @@
+
+<!-- saved from url=(0060)file://localhost/Users/Admin/Dropbox/MITx/day9/knapsack.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Knapsack</title>
+	<script src="./Knapsack_files/jquery.min.js"></script>
+	<script src="./Knapsack_files/knapsack.js"></script>
+    <link href="file://localhost/Users/Admin/Dropbox/MITx/day9/knapsack.css" rel="stylesheet">
+    <style>
+		body{
+			text-align: center
+
+		}
+		#bigframe{
+			position:relative; 
+			height:450px;
+		}
+		.knapsack .house {
+			position: absolute;
+			left: 10%;
+			display: inline-block;
+		}
+		.knapsack .burglar {
+			position: absolute;
+			right:10%;
+			display: inline-block;
+		}
+
+		.smallImg {
+			height: 100px;
+			width: 100px;
+		}
+		.item {
+			border:2px solid gray;
+			margin: 20px;
+			padding: 20px;
+			width: 360px;
+			height:280px;
+			display: inline-block;
+		}
+		.image{
+			margin-top: 5px;
+			height: 100px;
+			width: 200px;
+		}
+
+		.pic_frame{
+			display: inline-block;
+			margin-left: 2px;
+			margin-right:2px;
+		}
+
+		button {
+		    width: 90px;
+		    height:55px;
+		    border-radius: 11px;
+		    margin: 4px 2.5px;
+		    font-size: 28px;
+		    font-weight:500;
+		    background-color:#D6D6D6;
+		    border-width: 1px;
+		    border-color:#747474;
+		    border-style:solid;
+		    -webkit-box-shadow: inset -1px -1px 8px #888, inset 1px -1px 8px #888, inset 0 4px 8px 0px #FFFFFF;
+		    text-shadow: 0px 1px 0px #747474;
+		}
+		button:hover {
+		    background-color:#B8B8B8;
+		}
+
+		button:active {
+		    background-color:#AAAAAA;
+		    -webkit-box-shadow: inset 2px 4px 6px #777777;
+		}
+		/*.alert {
+			position: relative;
+			left: 180px;
+			top: 300px;
+			width: 300px;
+			padding: 20px;
+			z-index: 10;
+			text-align: center;
+			vertical-align: middle;
+			font-style: bold;
+			background-color: #000000;
+			color: #FFFFFF;
+			pointer-events: none;
+			opacity: 0;
+		}*/
+}
+    </style>
+</head>
+<body style="">
+	<h1>The Burglar's Dilema</h1>
+	<p>The knapsack can only afford 20 kg. Help the burglar to pick objects to maximize the total value of his knapsack.</p>
+	<div class="knapsack"></div>
+
+</body></html>

@@ -1,0 +1,39 @@
+
+<!-- saved from url=(0060)http://web.mit.edu/6.mitx/www/Week2Day1PMProjectHandout.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head><body cz-shortcut-listen="true">
+<p><b>Afternoon Project</b>: Multiple Choice Quiz</p>
+
+<p>We will finish building the multiple choice quiz interface and its functionalities. By working on these steps, you will:</p>
+<ul>
+<li>practice good Javascript practices</li>
+<li>understand local storage</li>
+<li>understand the use of web data stores (Parse)</li>
+<li>learn how to build a simple server with Node.js</li>
+<li>learn how to make ajax requests</li>
+<li>learn about some ajax intricacies (JSONP, CORS...)</li>
+<li>to not be afraid of Google, documentations, and external APIs</li>
+</ul>
+
+<ol style="padding-left:0px">
+<li>1. [Get it working on the client] In quiz.js (on the client), add functionality to check answers, go on to the next question, update the score, display the next question, etc. For now, do everything locally within Javascript. Don't worry about local storage, parse, or ajax'ing the server yet, and don't worry about making it pretty. Just get it mostly working.</li><br>
+<li>2. [Get it working with local storage] In quiz.js, add local storage functionality so that the question the student is on and their score is persistent across refreshes.</li><br>
+<li>3. [Get it working with Parse] Add a flag in quiz.js to use localStorage or Parse. To use Parse, you will need to figure out how to read data out, add data, and edit existing data. See https://www.parse.com/docs/js_guide</li><br>
+<li>4. [Check answers on the server] By using an ajax call, move the checkAnswer functionality onto the server. To parse out the URL parameters on the server side, you will probably want to require Node's url library and make use of it. Take a look at its documentation (and use Google!)</li><br>
+<li>5. [Graceful responses from the server] On the client side, give some feedback while the server is loading, and gracefully handle cases where the server times out (try turning Wifi off). To simulate the server being slow, try setTimeOut on the server to force the response to be delayed.</li><br>
+<li>6. [Check answers on the server with JSONP] As an alternative, try using JSONP when checking answers. If you do it right you should be able to remove the Access-Control-Allow-Origin line from the header, and just return a JSONP response.</li><br>
+<li>7. [Make sure nothing is leaked to client] For anything that should be done on the server, make sure it is done on the server. This may include, for example, having the Parse calls to update the score only done on the server. As a student, I should not be able to access the answers or be able to  change my grade somehow.</li><br>
+<li>8. [Incorporate the calculator] Add the calculator as a little widget to the quiz page. Note: this should require few lines of code if you just use the calculator module you have been building.</li><br>
+<li>9. [AJAX requests to external APIs] Try adding other widgets that draw data from other APIs other people are hosting! For example, you may want to look into Flickr or Wikipedia's API. Look for REST APIs with endpoints (which is the URL that you can make ajax calls to). If the API allows for cross origin requests, you will be able to use ajax calls without JSONP. If not, you may have to use JSONP by including in your ajax request a callback. See the documentation and Google!.</li><br>
+</ol>
+
+|  | |--|
+|  | |  |
+|--| |  |
+|  | | \|
+|  | |--|\
+
+ Have fun :)
+
+
+
+</body></html>
