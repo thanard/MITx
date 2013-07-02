@@ -73,6 +73,7 @@ function goGrouped(){
 		.duration(3000)
 		.delay(function(d,i){return i*20})
 		.attr("x",function(d,i,j){
+			console.log(i,j);
 			return x_scale(i)+x_scale.rangeBand()/stacked_data.length*j;
 		})
 		.attr("width",x_scale.rangeBand()/stacked_data.length)
